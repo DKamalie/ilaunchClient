@@ -1,0 +1,204 @@
+<zk>
+	<window apply="org.example.controller.UserController">
+		<hlayout valign="middle" spacing="320px" >
+			<hlayout valign="middle">
+				<label style="font-size: 1.8rem; color: #8ad132">BP MI</label>
+				<label style="margin-right: 3rem;font-size: 1.8rem; color: #26a805">RETAIL</label>
+			</hlayout>
+			<hlayout valign="middle">
+				<label style="color:rgba(56, 56, 56, 0.63); font-weight: 400; font-size:15px;">| Config | Edit | match | ETL Control | Publish | CPM Posting |</label>
+			</hlayout>
+
+			<hlayout valign="middle">
+				<label >Welcome back, User</label>
+				<button id="logout" label="Logout" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
+			</hlayout>
+		</hlayout>
+	</window>
+	<window >
+		<hlayout style="background-color:#8ad132; padding: 2rem">
+			<label style="color:white; font-weight: 600; font-size:20px;">User Administration</label>
+		</hlayout>
+	</window>
+	<window>
+		<grid mold="paging">
+			<columns>
+				<column label="Active" width="20%"/>
+				<column label="User Name" />
+				<column label="Name" />
+				<column label="Email" />
+				<column label="Role" />
+			</columns>
+
+			<rows>
+				<!--			<template name="data">-->
+				<row>
+					<checkbox/>
+					<label value="chiali" />
+					<label value="Alice" />
+					<label value="Chiang" />
+					<label value="alicechiang@bp.com" />
+					<label value="Administrator" />
+				</row>
+				<row>
+					<checkbox/>
+					<label value="hamban" />
+					<label value="Bantu" />
+					<label value="Hamile" />
+					<label value="bantuhamile@bp.com" />
+					<label value="Data Steward" />
+
+				</row>
+				<row>
+					<checkbox/>
+					<label value="janemi" />
+					<label value="Emile" />
+					<label value="Janari" />
+					<label value="emilejanari@bp.com" />
+					<label value="CPM User" />
+				</row>
+				<row>
+					<checkbox/>
+					<label value="corfah" />
+					<label value="Fahwaaz" />
+					<label value="Cornelius" />
+					<label value="fahwaazcornelius@bp.com" />
+					<label value="Administrator" />
+				</row>
+				<row>
+					<checkbox/>
+					<label value="conjac" />
+					<label value="Jacques" />
+					<label value="Conradie" />
+					<label value="jacquesconradie@bp.com" />
+					<label value="Data Steward" />
+				</row>
+				<row>
+					<checkbox/>
+					<label value="schja" />
+					<label value="Jade" />
+					<label value="Scholtz" />
+					<label value="jadescholtz@bp.com" />
+					<label value="Administrator" />
+				</row>
+
+			</rows>
+
+		</grid>
+	</window>
+	<window>
+
+		<grid>
+			<columns >
+				<column label="User Detail" style="background-color: #FFFFFF; color: rgba(0, 201, 0, 0.63); font-weight: 600; border: 0;"/>
+			</columns>
+			<rows>
+				<row>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px;">User Name</label>
+					<textbox id="userNameInput" value="@{userName}" width="250px" />
+				</row>
+				<row>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px;">Name</label>
+					<textbox id="firstNameInput" value="@{firstName}" width="250px"/>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px;">Surname</label>
+					<textbox id="surnameInput" value="@{surname}" width="250px"/>
+				</row>
+				<row>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px;">Email</label>
+					<textbox id="userEmailInput" value="@{userEmail}" width="250px"/>
+				</row>
+				<row>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px;">Role</label>
+					<combobox id="userRoleSelect" model="@{userRoleList}" width="250px"></combobox>
+				</row>
+				<row>
+					<label style="color:rgba(56, 56, 56, 0.63); font-weight: 600; font-size:15px">Active</label>
+					<checkbox id="isActiveCheckbox" value="@{isActive}" />
+				</row>
+			</rows>
+		</grid>
+
+		<hlayout spacing="1260px">
+			<label></label>
+			<hlayout>
+				<button id="newUser" label="New" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
+				<button id="saveUser" label="Save" iconSclass="z-icon-search" style="margin: 0 0 5px 5px"/>
+			</hlayout>
+
+		</hlayout>
+	</window>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('org.example.MyViewModel')"
+		validationMessages="@id('vmsgs')">
+
+		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>
+		<button label="ask" onClick="@command('cmd')"/>
+<!--		<listbox height="160px" model="@load(vm.users)" emptyMessage="No user found in the result">-->
+
+<!--			<listhead>-->
+
+<!--				<listheader label="Name" />-->
+
+<!--				<listheader label="Surname" />-->
+
+<!--				<listheader label="Username" width="20%"/>-->
+
+<!--			</listhead>-->
+
+<!--			<template name="model">-->
+
+<!--				<listitem>-->
+
+<!--					<listcell label="@init(each.name)"></listcell>-->
+
+<!--					<listcell label="@init(each.surname)"></listcell>-->
+
+<!--					<listcell label="@init(each.username)"></listcell>-->
+
+<!--				</listitem>-->
+
+<!--			</template>-->
+
+<!--		</listbox>-->
+
+	</window>
+
+	<window title="search" border="normal" width="600px" apply="org.example.controller.UserController">
+		<!--		Text Box-->
+		<textbox id="keywordBox" />
+		<button id="searchButton" label="Search" iconSclass="z-icon-search" style="margin: 0 0 5px 5px" />
+		<!--	Car List Area -->
+		<listbox id="userList" emptyMessage="No user found in the result" rows="5">
+			<listhead>
+				<listheader label="Name" />
+			</listhead>
+			<listitem>
+				<listcell label="${each.name}"></listcell>
+			</listitem>
+		</listbox>
+
+	</window>
+<!--	<window apply="org.zkoss.bind.BindComposer"-->
+<!--			viewModel="@id('vm')@init('org.example.MyViewModel')"-->
+<!--			validationMessages="@id('vmsgs')" border="normal" width="200px">-->
+<!--		<zscript><![CDATA[-->
+<!--        String[] data = new String[30];-->
+<!--        for(int j=0; j < data.length; ++j) {-->
+<!--            data[j] = "option "+j;-->
+<!--        }-->
+<!--        ListModel strset = new SimpleListModel(data);-->
+<!--    ]]></zscript>-->
+<!--		<listbox rows="10" model="@load(vm.users)">-->
+<!--			<listhead>-->
+<!--				<listheader label="Name"/>-->
+<!--			</listhead>-->
+<!--			<template name="model">-->
+<!--				<listitem>-->
+<!--					<listcell label="@load(each.name)"/>-->
+<!--				</listitem>-->
+<!--			</template>-->
+<!--		</listbox>-->
+<!--	</window>-->
+
+
+</zk>
